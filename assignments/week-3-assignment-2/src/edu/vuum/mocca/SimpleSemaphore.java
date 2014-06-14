@@ -66,10 +66,7 @@ public class SimpleSemaphore {
 		mLock.lock();
 		try {
 			while (mNumberOfAvailablePermits == 0) {
-				try {
-					mCondition.await();
-				} catch (InterruptedException e) {
-				}
+				mCondition.awaitUninterruptibly();
 			}
 			mNumberOfAvailablePermits--;
 		} finally {
@@ -97,14 +94,6 @@ public class SimpleSemaphore {
 	public int availablePermits() {
 		// TODO - you fill in here by changing null to the appropriate
 		// return value.
-		int numAvailable;
-		mLock.lock();
-		try {
-			numAvailable = mNumberOfAvailablePermits;
-			mCondition.signal();
-		} finally {
-			mLock.unlock();
-		}
-		return numAvailable;
+		return mNumberOfAvailablePermits;
 	}
 }
