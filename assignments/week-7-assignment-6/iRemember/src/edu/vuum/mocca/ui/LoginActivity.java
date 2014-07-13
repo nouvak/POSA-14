@@ -46,8 +46,9 @@ public class LoginActivity extends StoryActivityBase{
 	 */
 	public static File getLoginFile (Context context) {
 		return StorageUtilities.getOutputMediaFile(context, 	// Line 48
-				StorageUtilities.MEDIA_TYPE_TEXT, 
-				MAX_SECURITY, 
+				StorageUtilities.MEDIA_TYPE_TEXT,
+				// SOLUTION: instead od local "MAX_SECURITY", "StorageUtilities.SECURITY_PRIVATE" should be used to mark private data. 
+				StorageUtilities.SECURITY_PRIVATE, 
 				"login.txt");
 	}
 	

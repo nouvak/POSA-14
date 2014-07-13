@@ -52,8 +52,9 @@
         <!-- THIS IS THE SOUND RECORD ACTIVITY -->
         <activity
             android:name="edu.vuum.mocca.ui.SoundRecordActivity"
-            android:label="@string/title_activity_sound_record">
-            <intent-filter> 										<!-- Line 56 -->
+            android:label="@string/title_activity_sound_record"
+            android:permission="android.permission.RECORD_AUDIO">
+            <intent-filter> 										<!-- Line 56: SOLUTION: Here, the problem was solved by reqiring the sending app to have the permission to record audio. -->
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </activity>
